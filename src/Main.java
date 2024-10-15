@@ -12,9 +12,19 @@ public class Main {
                     ""
             );
             System.out.println("Genial, nos conectamos");
+
+            // realizamos una consulta a la base de datos
+            myStmt = myConn.createStatement();
+            myRes = myStmt.executeQuery("SELECT * FROM employees");
+
+            // iteramos los resultados para imprimir en consola.
+            while (myRes.next()){
+                System.out.println(myRes.getString("first_name"));
+            }
+
         } catch (Exception e) {
             e.printStackTrace();
             System.out.println("Algo salio mal :(");
         }
     }
-}   
+}
